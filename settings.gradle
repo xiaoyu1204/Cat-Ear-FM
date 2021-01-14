@@ -1,3 +1,4 @@
+include ':Layouts'
 include ':Values'
 include ':Base'
 include ':app'

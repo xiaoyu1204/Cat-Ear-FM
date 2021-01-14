@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -22,6 +23,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        dataBinding true
+    }
+    kapt {
+        generateStubs = true
+    }
+    //开启dataBinding功能支持
+    dataBinding {
+        enabled = true
+    }
+    //播放视频,饺子依赖
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -32,5 +54,60 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //侧滑菜单 recyclerview  协调者布局
+    implementation 'com.android.support:design:30.1.1'
+    //viewModelScope
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    // 数据绑定访问BR的环境
+    kapt "com.android.databinding:compiler:3.5.0"
+    //mmkv数据保存
+    implementation 'com.tencent:mmkv-static:1.0.23'
+    //retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
+    implementation 'com.github.kinkoi:materialsearchview:1.4.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.7'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor  'com.github.bumptech.glide:compiler:4.9.0'
+    // 轮播图依赖
+    implementation 'com.youth.banner:banner:1.4.10'
+    //卡片布局
+    implementation 'com.android.support:cardview-v7:30.0.0'
+    //获取动态权限框架
+    implementation 'com.github.dfqin:grantor:2.5'
+    //上拉加载 下拉刷新依赖 // 列表刷新依赖
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+    //垂直的tablayout
+    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
+    //防止冲突
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    //Activity不爆红的依赖
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
+    //图片缩放
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    //文本过长 点击展开全部
+    implementation 'com.ms-square:expandableTextView:0.1.4'
+    compile 'cn.carbs.android:ExpandableTextView:1.0.0'
+    //本地相机相册选择图片
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.3'
+    implementation 'com.jaeger.ninegridimageview:library:1.0.2'
+    //NineGridLayout
+    compile 'com.jaeger.ninegridimageview:library:1.0.2'
+    //吸顶
+    implementation 'com.android.support:design:23.1.1'
+    //播放视频,饺子依赖
+    implementation 'cn.jzvd:jiaozivideoplayer:7.5.0'
 
 }
