@@ -1,0 +1,4 @@
+include ':Values'
+include ':Base'
+include ':app'
+rootProject.name = "CarEarFM"
